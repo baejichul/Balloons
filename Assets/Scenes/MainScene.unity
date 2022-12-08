@@ -1571,6 +1571,8 @@ MonoBehaviour:
   square: {fileID: 6457580613953791109, guid: 3e783cc08bfe62c47a63cdde0e38ae7f, type: 3}
   timeTxt: {fileID: 1633650190}
   thisScoreTxt: {fileID: 1935583409}
+  maxScoreTxt: {fileID: 936198521}
+  anim: {fileID: 242181582}
 --- !u!4 &1273576923
 Transform:
   m_ObjectHideFlags: 0

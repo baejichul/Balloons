@@ -14,6 +14,9 @@ namespace RockPaperScissors
 		public GameObject square;
 		public Text timeTxt;
 		public Text thisScoreTxt;
+		public Text maxScoreTxt;
+		public Animator anim; 
+
 		float alive = 0f;
 		bool isRunning = true;
 
@@ -49,10 +52,29 @@ namespace RockPaperScissors
 
 		public void GameOver()
         {
+			anim.SetBool("isDie", true);
+
 			isRunning = false;
-			Time.timeScale = 0.0f;
+			Invoke("TimeStop", 0.5f);			
 			endPanel.SetActive(true);
 			thisScoreTxt.text = alive.ToString("N2");
+
+			if (PlayerPrefs.HasKey("bestScore") == false)
+            {
+				PlayerPrefs.SetFloat("bestScore", alive);
+			}
+            else
+            {
+				if ( alive > PlayerPrefs.GetFloat("bestScore"))
+				PlayerPrefs.SetFloat("bestScore", alive);
+			}
+
+			maxScoreTxt.text = PlayerPrefs.GetFloat("bestScore").ToString("N2");
+		}
+
+		void TimeStop()
+        {
+			Time.timeScale = 0.0f;
 		}
 
 		public void GameRetry()

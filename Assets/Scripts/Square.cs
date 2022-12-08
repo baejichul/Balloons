@@ -17,6 +17,14 @@ namespace RockPaperScissors
 			transform.localScale = new Vector3(size, size, 0);
 		}
 
+        void Update()
+        {
+            if (transform.position.y < -5.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Balloon")
